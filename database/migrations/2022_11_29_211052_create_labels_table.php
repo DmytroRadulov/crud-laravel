@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('labels', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
+        });
+        Schema::create('label_project', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('project_id')->index()->constrained('projects', 'id')->cascadeOnDelete();
+            $table->foreignId('label_id')->index()->constrained('labels', 'id')->cascadeOnDelete();
         });
     }
 
@@ -26,6 +32,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('label_project');
         Schema::dropIfExists('labels');
     }
 };

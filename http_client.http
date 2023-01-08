@@ -1,0 +1,107 @@
+# Users
+
+# Add users (create & add an email with verification token (plain text) to queue)
+POST http://crud.laravel/api/users
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "User1",
+    "email": "user1@gmail.com",
+    "country_name": "ua"
+}
+
+###
+
+# Verify user
+GET http://crud.laravel/api/users/1/verify?token=ihjk2j3r4t8g9rhiqp
+Accept: application/json
+
+###
+
+# List users (filter by name OR/AND email OR/AND verified OR/AND country)
+GET http://crud.laravel/api/users?filter[name]=&filter[email]=&filter[country]=&filter[verified]=
+Accept: application/json
+
+###
+
+# Edit users
+PUT http://crud.laravel/api/users/1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "User1",
+    "email": "user1@gmail.com",
+    "country_name": "ua"
+}
+
+###
+
+# Delete users
+DELETE http://crud.laravel/api/users/1
+Accept: application/json
+
+###
+###
+###
+# Projects
+# Add projects
+POST http://crud.laravel/api/projects
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Project1"
+}
+
+###
+# Link projects to users
+POST http://crud.laravel/api/projects/1
+Accept: application/json
+Content-Type: application/json
+
+[1, 2, 3]
+
+###
+# List projects incl. labels (filter by user.email OR/AND user.continent OR/AND labels)
+GET http://crud.laravel/api/projects?filter[user][continent_id]=&filter[user][email]=awdaw@awda&filter[labels][0]=&filter[labels][1]=
+Accept: application/json
+
+###
+
+# Delete projects
+DELETE http://crud.laravel/api/projects/1
+Accept: application/json
+
+###
+###
+###
+# Labels
+# Add labels
+POST http://crud.laravel/api/labels
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Label1"
+}
+
+###
+# Link labels to projects
+POST http://crud.laravel/api/labels/1
+Accept: application/json
+Content-Type: application/json
+
+[1, 2, 3]
+
+###
+# List labels (filter by user.email OR/AND projects)
+GET http://crud.laravel/api/projects?filter[user][email]=&filter[projects][0]=&filter[projects][1]=
+Accept: application/json
+
+###
+
+# Delete labels
+DELETE http://crud.laravel/api/labels/1
+Accept: application/json

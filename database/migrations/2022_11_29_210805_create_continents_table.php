@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('continets', function (Blueprint $table) {
+        Schema::create('continents', function (Blueprint $table) {
             $table->id();
+            $table->char('code');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('continets');
+        Schema::dropIfExists('continents');
     }
 };
